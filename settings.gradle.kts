@@ -1,27 +1,11 @@
-pluginManagement {
-    enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-    repositories {
-        mavenCentral()
-        google()
-        gradlePluginPortal()
-    }
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.namespace == "com.android") {
-                useModule("com.android.tools.build:gradle:${requested.version}")
-            }
-        }
-    }
+import java.io.File
 
-    dependencyResolutionManagement {
-        versionCatalogs {
-            file("gradle/versions").listFiles().map {
-                it.nameWithoutExtension to it.absolutePath
-            }.forEach { (name, path) ->
-                create(name) { from(files(path)) }
-            }
-        }
-    }
+pluginManagement {
+    includeBuild("../build-logic")
+}
+
+plugins {
+    id("multimodule")
 }
 
 fun includeSubs(base: String, path: String = base, vararg subs: String) {
@@ -33,7 +17,7 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
 
 listOf(
  	"lexi", "neat", "kash-api", "kash-client", "geo-api", "geo-client", "kronecker", "symphony", 
- 	"epsilon-api", "krono-core", "krono-client", "hormone", "identifier-client", "kommerce",
+ 	"epsilon-api", "krono-core", "krono-client", "hormone", "identifier-api", "kommerce",
  	"kollections", "koncurrent", "kommander", "cabinet-api","epsilon-client",
 ).forEach { includeBuild("../$it") }
 

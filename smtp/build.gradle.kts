@@ -13,7 +13,7 @@ kotlin {
     sourceSets {
         val main by getting {
             dependencies {
-                api(projects.mailerApi)
+                api(projects.ravenApi)
                 implementation(javax.mail)
             }
         }

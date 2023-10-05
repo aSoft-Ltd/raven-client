@@ -5,7 +5,6 @@ package raven
 
 import kollections.List
 import kollections.iListOf
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
 data class EmailMessage(

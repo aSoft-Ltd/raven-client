@@ -1,4 +1,4 @@
-package mailer
+package raven
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

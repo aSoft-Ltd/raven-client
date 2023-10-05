@@ -1,8 +1,9 @@
-package mailer
+package raven
 
 import koncurrent.Later
 import koncurrent.later
 import kollections.List
+import koncurrent.later.await
 import kotlinx.coroutines.delay
 import kotlin.math.max
 
@@ -34,6 +35,7 @@ class MockMailer(val config: MockMailerConfig = MockMailerConfig()) : Mailer {
             val messages = outbox.getOrPut(it.email.value) { mutableListOf() }
             messages.add(message)
         }
+        config.box.save(message).await()
         message
     }
 

@@ -1,4 +1,4 @@
-package mailer
+package raven
 
 data class MockAttachment<T>(
     override val content: T,

@@ -1,4 +1,4 @@
-package mailer
+package raven
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

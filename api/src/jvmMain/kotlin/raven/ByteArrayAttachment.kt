@@ -1,4 +1,4 @@
-package mailer
+package raven
 
 class ByteArrayAttachment(
     override val content: ByteArray,

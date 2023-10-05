@@ -1,4 +1,4 @@
-package mailer
+package raven
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -12,6 +12,7 @@ interface MockMailerConfig {
     val printToConsole: Boolean
     val separator: String
     val simulationTime: Long
+    val box: MailBox
 
     /**
      * It looks better when this value is an odd number
@@ -47,6 +48,9 @@ interface MockMailerConfig {
         @JvmField
         val DEFAULT_PADDING_WIDTH = " "
 
+        @JvmField
+        val DEFAULT_MAIL_BOX = LocalMemoryMailbox()
+
         @JvmOverloads
         @JvmStatic
         @JvmName("create")
@@ -58,16 +62,18 @@ interface MockMailerConfig {
             marginWidth: String = DEFAULT_MARGIN_WIDTH,
             border: String = DEFAULT_BORDER,
             paddingWidth: String = DEFAULT_PADDING_WIDTH,
-            scope: CoroutineScope = DEFAULT_SCOPE
+            scope: CoroutineScope = DEFAULT_SCOPE,
+            box: MailBox = DEFAULT_MAIL_BOX
         ) = object : MockMailerConfig {
-            override val printToConsole: Boolean = printToConsole
-            override val simulationTime: Long = simulationTime
-            override val separator: String = separator
+            override val printToConsole = printToConsole
+            override val simulationTime = simulationTime
+            override val separator = separator
             override val charsPerLine = charsPerLine
             override val marginWidth = marginWidth
             override val border = border
             override val paddingWidth = paddingWidth
-            override val scope: CoroutineScope = scope
+            override val scope = scope
+            override val box = box
         }
     }
 }

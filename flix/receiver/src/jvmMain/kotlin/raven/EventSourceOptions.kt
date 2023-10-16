@@ -1,7 +1,9 @@
 package raven
 
+import java.net.URI
 import kotlinx.coroutines.CoroutineScope
 
-class FlixMailerOptions(
+class EventSourceOptions(
+    val uri: URI,
     val scope: CoroutineScope
 )

@@ -29,7 +29,7 @@ class FlixMailbox(private val options: FlixMailBoxOptions) : MailBox {
         }
     }
 
-    fun anticipate(): Later<String> {
+    override fun anticipate(): Later<String> {
         val current = messages.value
         return options.scope.later { messages.filterNotNull().filter { it != current }.first() }
     }

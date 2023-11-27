@@ -15,13 +15,4 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
-listOf(
-    "lexi", "neat", "geo-api", "kronecker",
-    "epsilon-api", "krono-core", "hormone", "identifier-api", "kommerce",
-    "kollections", "koncurrent", "kommander", "cabinet-api", "raven-core"
-).forEach { includeBuild("../$it") }
-
 rootProject.name = "raven-client"
-
-// <BitframeUtils>
-includeSubs(base = "raven-flix", path = "flix", "receiver")
